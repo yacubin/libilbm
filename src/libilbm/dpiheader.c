@@ -37,7 +37,7 @@ ILBM_DPIHeader *ILBM_createDPIHeader(void)
     return dpiHeader;
 }
 
-IFF_Chunk *ILBM_readDPIHeader(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readDPIHeader(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_DPIHeader *dpiHeader = ILBM_createDPIHeader();
     
@@ -59,7 +59,7 @@ IFF_Chunk *ILBM_readDPIHeader(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)dpiHeader;
 }
 
-int ILBM_writeDPIHeader(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeDPIHeader(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_DPIHeader *dpiHeader = (const ILBM_DPIHeader*)chunk;
     

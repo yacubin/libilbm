@@ -22,7 +22,6 @@
 #ifndef __ILBM_COLORRANGE_H
 #define __ILBM_COLORRANGE_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -50,9 +49,9 @@ ILBM_ColorRange;
 
 ILBM_ColorRange *ILBM_createColorRange(void);
 
-IFF_Chunk *ILBM_readColorRange(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readColorRange(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeColorRange(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeColorRange(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkColorRange(const IFF_Chunk *chunk);
 

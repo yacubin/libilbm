@@ -37,7 +37,7 @@ ILBM_Sprite *ILBM_createSprite(void)
     return sprite;
 }
 
-IFF_Chunk *ILBM_readSprite(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readSprite(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_Sprite *sprite = ILBM_createSprite();
     
@@ -53,7 +53,7 @@ IFF_Chunk *ILBM_readSprite(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)sprite;
 }
 
-int ILBM_writeSprite(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeSprite(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_Sprite *sprite = (const ILBM_Sprite*)chunk;
     

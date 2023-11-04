@@ -22,7 +22,6 @@
 #ifndef __ILBM_GRAB_H
 #define __ILBM_GRAB_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -44,9 +43,9 @@ ILBM_Point2D;
 
 ILBM_Point2D *ILBM_createGrab(void);
 
-IFF_Chunk *ILBM_readGrab(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readGrab(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeGrab(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeGrab(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkGrab(const IFF_Chunk *chunk);
 

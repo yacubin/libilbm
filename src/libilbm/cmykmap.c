@@ -55,7 +55,7 @@ ILBM_CMYKRegister *ILBM_addCMYKRegisterInCMYKMap(ILBM_CMYKMap *cmykMap)
     return cmykRegister;
 }
 
-IFF_Chunk *ILBM_readCMYKMap(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readCMYKMap(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_CMYKMap *cmykMap = ILBM_createCMYKMap();
     
@@ -94,7 +94,7 @@ IFF_Chunk *ILBM_readCMYKMap(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)cmykMap;
 }
 
-int ILBM_writeCMYKMap(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeCMYKMap(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_CMYKMap *cmykMap = (const ILBM_CMYKMap*)chunk;
     unsigned int i;

@@ -22,7 +22,6 @@
 #ifndef __ILBM_CAMG_H
 #define __ILBM_CAMG_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -44,9 +43,9 @@ ILBM_Viewport;
 
 ILBM_Viewport *ILBM_createViewport(void);
 
-IFF_Chunk *ILBM_readViewport(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readViewport(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeViewport(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeViewport(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkViewport(const IFF_Chunk *chunk);
 

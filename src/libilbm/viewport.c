@@ -37,7 +37,7 @@ ILBM_Viewport *ILBM_createViewport(void)
     return viewport;
 }
 
-IFF_Chunk *ILBM_readViewport(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readViewport(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_Viewport *viewport = ILBM_createViewport();
     
@@ -53,7 +53,7 @@ IFF_Chunk *ILBM_readViewport(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)viewport;
 }
 
-int ILBM_writeViewport(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeViewport(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_Viewport *viewport = (const ILBM_Viewport*)chunk;
     

@@ -22,7 +22,6 @@
 #ifndef __ILBM_CMYKMAP_H
 #define __ILBM_CMYKMAP_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -53,9 +52,9 @@ ILBM_CMYKMap *ILBM_createCMYKMap(void);
 
 ILBM_CMYKRegister *ILBM_addCMYKRegisterInCMYKMap(ILBM_CMYKMap *cmykMap);
 
-IFF_Chunk *ILBM_readCMYKMap(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readCMYKMap(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeCMYKMap(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeCMYKMap(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkCMYKMap(const IFF_Chunk *chunk);
 

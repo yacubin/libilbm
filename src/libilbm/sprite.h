@@ -22,7 +22,6 @@
 #ifndef __ILBM_SPRITE_H
 #define __ILBM_SPRITE_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -44,9 +43,9 @@ ILBM_Sprite;
 
 ILBM_Sprite *ILBM_createSprite(void);
 
-IFF_Chunk *ILBM_readSprite(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readSprite(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeSprite(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeSprite(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkSprite(const IFF_Chunk *chunk);
 

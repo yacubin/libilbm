@@ -22,7 +22,6 @@
 #ifndef __ILBM_BITMAPHEADER_H
 #define __ILBM_BITMAPHEADER_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -68,9 +67,9 @@ ILBM_BitMapHeader;
 
 ILBM_BitMapHeader *ILBM_createBitMapHeader(void);
 
-IFF_Chunk *ILBM_readBitMapHeader(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readBitMapHeader(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeBitMapHeader(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeBitMapHeader(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkBitMapHeader(const IFF_Chunk *chunk);
 

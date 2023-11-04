@@ -22,7 +22,6 @@
 #ifndef __ILBM_COLORNAMES_H
 #define __ILBM_COLORNAMES_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -50,9 +49,9 @@ ILBM_ColorNames *ILBM_createColorNames(void);
 
 void ILBM_addColorName(ILBM_ColorNames *colorNames, char *colorName);
 
-IFF_Chunk *ILBM_readColorNames(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readColorNames(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeColorNames(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeColorNames(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkColorNames(const IFF_Chunk *chunk);
 

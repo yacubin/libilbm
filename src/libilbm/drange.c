@@ -95,7 +95,7 @@ ILBM_DFade *ILBM_addDFadeToDRange(ILBM_DRange *drange)
     return dfade;
 }
 
-IFF_Chunk *ILBM_readDRange(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readDRange(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_DRange *drange = ILBM_createDRange(0);
     
@@ -226,7 +226,7 @@ IFF_Chunk *ILBM_readDRange(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)drange;
 }
 
-int ILBM_writeDRange(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeDRange(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_DRange *drange = (const ILBM_DRange*)chunk;
     unsigned int i;

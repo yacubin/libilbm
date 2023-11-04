@@ -41,7 +41,7 @@ ILBM_CycleInfo *ILBM_createCycleInfo(void)
     return cycleInfo;
 }
 
-IFF_Chunk *ILBM_readCycleInfo(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readCycleInfo(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_CycleInfo *cycleInfo = ILBM_createCycleInfo();
     
@@ -87,7 +87,7 @@ IFF_Chunk *ILBM_readCycleInfo(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)cycleInfo;
 }
 
-int ILBM_writeCycleInfo(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeCycleInfo(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_CycleInfo *cycleInfo = (const ILBM_CycleInfo*)chunk;
     

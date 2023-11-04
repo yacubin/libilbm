@@ -22,7 +22,6 @@
 #ifndef __ILBM_DRANGE_H
 #define __ILBM_DRANGE_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -89,9 +88,9 @@ ILBM_DIndex *ILBM_addDIndexToDRange(ILBM_DRange *drange);
 
 ILBM_DFade *ILBM_addDFadeToDRange(ILBM_DRange *drange);
 
-IFF_Chunk *ILBM_readDRange(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readDRange(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeDRange(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeDRange(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkDRange(const IFF_Chunk *chunk);
 

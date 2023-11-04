@@ -22,7 +22,6 @@
 #ifndef __ILBM_DESTMERGE_H
 #define __ILBM_DESTMERGE_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -48,9 +47,9 @@ ILBM_DestMerge;
 
 ILBM_DestMerge *ILBM_createDestMerge(void);
 
-IFF_Chunk *ILBM_readDestMerge(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readDestMerge(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeDestMerge(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeDestMerge(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkDestMerge(const IFF_Chunk *chunk);
 

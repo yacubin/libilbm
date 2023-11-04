@@ -29,9 +29,13 @@
 extern "C" {
 #endif
 
+IFF_Chunk *ILBM_readReader(IFF_Reader *file);
+
 IFF_Chunk *ILBM_readFd(FILE *file);
 
 IFF_Chunk *ILBM_read(const char *filename);
+
+int ILBM_writeWriter(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_writeFd(FILE *file, const IFF_Chunk *chunk);
 

@@ -41,7 +41,7 @@ ILBM_DestMerge *ILBM_createDestMerge(void)
     return destMerge;
 }
 
-IFF_Chunk *ILBM_readDestMerge(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readDestMerge(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_DestMerge *destMerge = ILBM_createDestMerge();
     
@@ -81,7 +81,7 @@ IFF_Chunk *ILBM_readDestMerge(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)destMerge;
 }
 
-int ILBM_writeDestMerge(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeDestMerge(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_DestMerge *destMerge = (const ILBM_DestMerge*)chunk;
     

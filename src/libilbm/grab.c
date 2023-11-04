@@ -37,7 +37,7 @@ ILBM_Point2D *ILBM_createGrab(void)
     return point2d;
 }
 
-IFF_Chunk *ILBM_readGrab(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readGrab(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_Point2D *point2d = ILBM_createGrab();
     
@@ -59,7 +59,7 @@ IFF_Chunk *ILBM_readGrab(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)point2d;
 }
 
-int ILBM_writeGrab(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeGrab(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_Point2D *point2d = (const ILBM_Point2D*)chunk;
     

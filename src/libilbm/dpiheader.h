@@ -22,7 +22,6 @@
 #ifndef __ILBM_DPIHEADER_H
 #define __ILBM_DPIHEADER_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -44,9 +43,9 @@ ILBM_DPIHeader;
 
 ILBM_DPIHeader *ILBM_createDPIHeader(void);
 
-IFF_Chunk *ILBM_readDPIHeader(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readDPIHeader(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeDPIHeader(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeDPIHeader(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkDPIHeader(const IFF_Chunk *chunk);
 

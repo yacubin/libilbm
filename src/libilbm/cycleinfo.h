@@ -22,7 +22,6 @@
 #ifndef __ILBM_CYCLEINFO_H
 #define __ILBM_CYCLEINFO_H
 
-#include <stdio.h>
 #include <libiff/ifftypes.h>
 #include <libiff/group.h>
 #include <libiff/chunk.h>
@@ -51,9 +50,9 @@ ILBM_CycleInfo;
 
 ILBM_CycleInfo *ILBM_createCycleInfo(void);
 
-IFF_Chunk *ILBM_readCycleInfo(FILE *file, const IFF_Long chunkSize);
+IFF_Chunk *ILBM_readCycleInfo(IFF_Reader *file, const IFF_Long chunkSize);
 
-int ILBM_writeCycleInfo(FILE *file, const IFF_Chunk *chunk);
+int ILBM_writeCycleInfo(IFF_Writer *file, const IFF_Chunk *chunk);
 
 int ILBM_checkCycleInfo(const IFF_Chunk *chunk);
 

@@ -120,3 +120,5 @@ EXPORTS
 	ILBM_freeDPIHeader                @118
 	ILBM_printDPIHeader               @119
 	ILBM_compareDPIHeader             @120
+	ILBM_readReader                   @121
+	ILBM_writeWriter                  @122

@@ -41,7 +41,7 @@ ILBM_BitMapHeader *ILBM_createBitMapHeader(void)
     return bitMapHeader;
 }
 
-IFF_Chunk *ILBM_readBitMapHeader(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readBitMapHeader(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_BitMapHeader *bitMapHeader = ILBM_createBitMapHeader();
     
@@ -135,7 +135,7 @@ IFF_Chunk *ILBM_readBitMapHeader(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)bitMapHeader;
 }
 
-int ILBM_writeBitMapHeader(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeBitMapHeader(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_BitMapHeader *bitMapHeader = (const ILBM_BitMapHeader*)chunk;
     

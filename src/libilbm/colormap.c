@@ -55,7 +55,7 @@ ILBM_ColorRegister *ILBM_addColorRegisterInColorMap(ILBM_ColorMap *colorMap)
     return colorRegister;
 }
 
-IFF_Chunk *ILBM_readColorMap(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readColorMap(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_ColorMap *colorMap = ILBM_createColorMap();
     
@@ -94,7 +94,7 @@ IFF_Chunk *ILBM_readColorMap(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)colorMap;
 }
 
-int ILBM_writeColorMap(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeColorMap(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_ColorMap *colorMap = (const ILBM_ColorMap*)chunk;
     unsigned int i;

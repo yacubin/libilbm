@@ -33,6 +33,11 @@ static IFF_Extension extension[] = {
 #include "ilbmextensions.h"
 };
 
+IFF_Chunk *ILBM_readReader(IFF_Reader *file)
+{
+    return IFF_readReader(file, extension, ILBM_NUM_OF_FORM_TYPES);
+}
+
 IFF_Chunk *ILBM_read(const char *filename)
 {
     return IFF_read(filename, extension, ILBM_NUM_OF_FORM_TYPES);
@@ -41,6 +46,11 @@ IFF_Chunk *ILBM_read(const char *filename)
 IFF_Chunk *ILBM_readFd(FILE *file)
 {
     return IFF_readFd(file, extension, ILBM_NUM_OF_FORM_TYPES);
+}
+
+int ILBM_writeWriter(IFF_Writer *file, const IFF_Chunk *chunk)
+{
+    return IFF_writeWriter(file, chunk, extension, ILBM_NUM_OF_FORM_TYPES);
 }
 
 int ILBM_writeFd(FILE *file, const IFF_Chunk *chunk)

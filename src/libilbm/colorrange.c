@@ -41,7 +41,7 @@ ILBM_ColorRange *ILBM_createColorRange(void)
     return colorRange;
 }
 
-IFF_Chunk *ILBM_readColorRange(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readColorRange(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_ColorRange *colorRange = ILBM_createColorRange();
     
@@ -81,7 +81,7 @@ IFF_Chunk *ILBM_readColorRange(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)colorRange;
 }
 
-int ILBM_writeColorRange(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeColorRange(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_ColorRange *colorRange = (const ILBM_ColorRange*)chunk;
     

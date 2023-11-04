@@ -60,7 +60,7 @@ void ILBM_addColorName(ILBM_ColorNames *colorNames, char *colorName)
     colorNames->chunkSize += colorNameSize;
 }
 
-IFF_Chunk *ILBM_readColorNames(FILE *file, const IFF_Long chunkSize)
+IFF_Chunk *ILBM_readColorNames(IFF_Reader *file, const IFF_Long chunkSize)
 {
     ILBM_ColorNames *colorNames = ILBM_createColorNames();
     
@@ -85,16 +85,15 @@ IFF_Chunk *ILBM_readColorNames(FILE *file, const IFF_Long chunkSize)
         /* Read the color names */
         for(i = 0; i < colorNamesLength; i++)
         {
-            int c;
+            char c;
             char colorName[BUFFER_SIZE];
             /* Reset the buffer index to 0 */
             unsigned int index = 0;
             
             do
             {
-                c = fgetc(file); /* Read character */
-                
-                if(c == EOF) /* We should never reach the end of the file prematurely */
+                /* Read character */
+                if(!IFF_readData(file, &c, sizeof(c))) /* We should never reach the end of the file prematurely */
                 {
                     ILBM_free((IFF_Chunk*)colorNames);
                     return NULL;
@@ -126,7 +125,7 @@ IFF_Chunk *ILBM_readColorNames(FILE *file, const IFF_Long chunkSize)
     return (IFF_Chunk*)colorNames;
 }
 
-int ILBM_writeColorNames(FILE *file, const IFF_Chunk *chunk)
+int ILBM_writeColorNames(IFF_Writer *file, const IFF_Chunk *chunk)
 {
     const ILBM_ColorNames *colorNames = (const ILBM_ColorNames*)chunk;
     unsigned int i;
@@ -140,8 +139,8 @@ int ILBM_writeColorNames(FILE *file, const IFF_Chunk *chunk)
     for(i = 0; i < colorNames->colorNamesLength; i++)
     {
         char *colorName = colorNames->colorNames[i];
-        fputs(colorName, file);
-        fputc('\0', file);
+        if(!IFF_writeData(file, colorName, strlen(colorName) + 1))
+            return FALSE;
     }
     
     if(!IFF_writePaddingByte(file, colorNames->chunkSize, CHUNKID))
