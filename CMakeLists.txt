@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(libilbm VERSION 0.1.1 DESCRIPTION "EA-85 ILBM parser library" LANGUAGES C)
+project(libilbm VERSION 0.1.2 DESCRIPTION "EA-85 ILBM parser library" LANGUAGES C)
 
 include(GNUInstallDirs)
 include(CheckIncludeFile)
@@ -11,6 +11,11 @@ set(prefix "${CMAKE_INSTALL_PREFIX}")
 set(exec_prefix "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}")
 set(libdir "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
 set(includedir "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}")
+
+set(ilbm_BUILD_TYPE SHARED)
+if(DEFINED BUILD_SHARED_LIBS AND NOT BUILD_SHARED_LIBS)
+  set(ilbm_BUILD_TYPE STATIC)
+endif ()
 
 check_include_file(getopt.h HAVE_GETOPT_H)
 if(HAVE_GETOPT_H)
@@ -113,7 +118,7 @@ endif ()
 configure_file(src/libilbm.pc.in "${CMAKE_CURRENT_BINARY_DIR}/libilbm.pc" @ONLY UNIX)
 
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${ilbm_HEADERS} ${ilbm_SOURCES} ${ilbm_DATAFILES})
-add_library(ilbm SHARED ${ilbm_HEADERS} ${ilbm_SOURCES} ${ilbm_DATAFILES})
+add_library(ilbm ${ilbm_BUILD_TYPE} ${ilbm_HEADERS} ${ilbm_SOURCES} ${ilbm_DATAFILES})
 target_include_directories(ilbm PUBLIC "$<BUILD_INTERFACE:${ilbm_INCLUDES}>")
 target_compile_definitions(ilbm PRIVATE "${ilbm_DEFINITIONS}")
 target_link_libraries(ilbm PUBLIC ${ilbm_LIBRARIES})
